@@ -33,3 +33,6 @@ services:
 volumes:
   tradingagents_data:
   ollama_data:
+
+ports:
+      - "8000:8000"
