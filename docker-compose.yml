@@ -3,6 +3,12 @@ services:
     build: .
     env_file:
       - .env
+    environment:
+      - LLM_PROVIDER=ollama
+      - http_proxy=http://host.docker.internal:10808
+      - https_proxy=http://host.docker.internal:10808
+      - HTTP_PROXY=http://host.docker.internal:10808
+      - HTTPS_PROXY=http://host.docker.internal:10808
     volumes:
       - tradingagents_data:/home/appuser/.tradingagents
     ports:
@@ -23,6 +29,10 @@ services:
       - .env
     environment:
       - LLM_PROVIDER=ollama
+      - http_proxy=http://host.docker.internal:10808
+      - https_proxy=http://host.docker.internal:10808
+      - HTTP_PROXY=http://host.docker.internal:10808
+      - HTTPS_PROXY=http://host.docker.internal:10808
     volumes:
       - tradingagents_data:/home/appuser/.tradingagents
     depends_on:
