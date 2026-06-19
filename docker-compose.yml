@@ -3,15 +3,17 @@ services:
     build: .
     env_file:
       - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
-      - http_proxy=http://192.168.0.3:10809
-      - https_proxy=http://192.168.0.3:10809
-      - HTTP_PROXY=http://192.168.0.3:10809
-      - HTTPS_PROXY=http://192.168.0.3:10809
+      http_proxy: "http://host.docker.internal:10809"
+      https_proxy: "http://host.docker.internal:10809"
+      HTTP_PROXY: "http://host.docker.internal:10809"
+      HTTPS_PROXY: "http://host.docker.internal:10809"
     volumes:
       - tradingagents_data:/home/appuser/.tradingagents
     ports:
-      - "8000:8000"
+      - "8000:8000" 
     tty: true
     stdin_open: true
 
@@ -26,12 +28,14 @@ services:
     build: .
     env_file:
       - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
-      - LLM_PROVIDER=ollama
-      - http_proxy=http://192.168.0.3:10809
-      - https_proxy=http://192.168.0.3:10809
-      - HTTP_PROXY=http://192.168.0.3:10809
-      - HTTPS_PROXY=http://192.168.0.3:10809
+      LLM_PROVIDER: "ollama"
+      http_proxy: "http://host.docker.internal:10809"
+      https_proxy: "http://host.docker.internal:10809"
+      HTTP_PROXY: "http://host.docker.internal:10809"
+      HTTPS_PROXY: "http://host.docker.internal:10809"
     volumes:
       - tradingagents_data:/home/appuser/.tradingagents
     depends_on:
