@@ -1,8 +1,6 @@
 services:
   tradingagents:
     build: .
-    env_file:
-      - .env
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -30,8 +28,6 @@ services:
 
   tradingagents-ollama:
     build: .
-    env_file:
-      - .env
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
