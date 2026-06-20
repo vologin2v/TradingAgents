@@ -35,11 +35,12 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
+      - LLM_PROVIDER=ollama
       - http_proxy=http://proxy_gateway:10809
       - https_proxy=http://proxy_gateway:10809
       - HTTP_PROXY=http://proxy_gateway:10809
       - HTTPS_PROXY=http://proxy_gateway:10809
-    LLM_PROVIDER: "ollama"
+    
      
     volumes:
       - tradingagents_data:/home/appuser/.tradingagents
